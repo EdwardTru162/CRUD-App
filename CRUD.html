@@ -127,6 +127,24 @@
             color: coral;
         }
 
+        footer{
+            display: grid;
+            place-items: center;
+        }
+
+        footer a {
+            color: inherit;
+        }
+
+        footer i {
+            cursor: pointer;
+        }
+
+        footer i:hover {
+            color: cyan;
+        }
+
+
     </style>
 </head>
 
@@ -147,31 +165,33 @@
         </section>
     </main>
     <footer>
-        footer  
+        <a href="https://youtube.com/smoljames' target="_blank">
+        <i class="fa-brands fa-youtube"></i>
     </footer>
 </body>
 <script>
     let todos = ['Go to the supermarket']
     
 
-    const todosList =document.getElementById('todos')
-    const todoInput = document.getElementById('textInput')
-    const inputBtn = document.getElementById('add')
+    const todosList = document.getElementById('todos');
+    const todoInput = document.getElementById('textInput');
+    const inputBtn = document.getElementById('add');
 
 
     function addTodo(e) {
-        e.preventDefault{}
-        let textValue = todoInput.value
-        todos.push(textValue)
-        renderTodos()
+        e.preventDefault()
+        let textValue = todoInput.value;
+        todos.push(textValue);
+        todosList.innerHTML = ' ';
+        renderTodos();
     }
-    inputBtn.addEventListener('click, addTodo')
+    inputBtn.addEventListener('click, addTodo');
 
 
     function renderTodos(){
-        todosList.innerHTML = ''
+        todosList.innerHTML = '';
         todos.forEach((todo, i) => {
-            let currentHTML = todosList.innerHTML
+            let currentHTML = todosList.innerHTML;
             let newHTML = (
                 `<div class="todoItem">
                     <p>${i + 1}. ${todo}</p>
@@ -180,10 +200,10 @@
                         <i onclick="removeTodo(${i})" class="fa-regular fa-trash-can"></i>
                     </div>
                 </div>`
-            )
+            );
 
-            let amendedHTML = currentHTML + newHTML
-            todosList.innerHTML = amendedHTML
+            let amendedHTML = currentHTML + newHTML;
+            todosList.innerHTML = amendedHTML;
         })
         }
 

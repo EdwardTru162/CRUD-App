@@ -33,6 +33,14 @@
             gap: 24px;
             padding: 24px;
         }
+        header,
+        main,
+        footer {
+            width: 800px;
+            max-width: 100vw;
+            margin: 0 auto;
+            
+        }
 
         header{
             display: flex;
@@ -43,7 +51,7 @@
         main{
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 24px;
             flex: 1;
         }
 
@@ -55,19 +63,130 @@
             color: cyan;
             cursor: pointer;
         }
+
+        #enterTodo form{
+            display: flex;
+            align-items: stretch;
+            border: 1px solid skyblue;
+            position: relative;
+        }
+
+        #enterTodo input {
+            background: transparent;
+            outline: none;
+            padding: 12px;
+            color: white;
+            flex: 1;
+            border: none;
+        }
+
+        #enterTodo button {
+            position:absolute;
+            right: 0;
+            top:0;
+            height: 100%;
+            background: skyblue;
+            border: none;
+            outline: none;
+            padding: 0 12px;
+            color: #0f172a;
+            font-family: 'Bungee', sans-serif;
+            cursor: pointer;
+
+        }
+
+        #enterTodo button:hover{
+            background: #0f172a;
+            color: skyblue;
+
+        }
+
+        #todos {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .todoItem{
+            display: flex;
+            align-items: center;
+        }
+
+        .todoItem p {
+            flex: 1;
+        }
+
+        .todoItem div {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .actions:hover {
+            color: coral;
+        }
+
     </style>
 </head>
+
 <body>
     <header>
         <h1>Todos</h1>
         <i class="fa-solid fa-plus plusIcon"></i>
     </header>
-
     <main>
-        main
+        <section id="enterTodo">
+            <form>
+                <input type ="text" id="textInput" placeholder="Enter todo"/>
+                <button type="input" id="add">Add</button>
+            </form>
+        </section>
+        <section id="todos">
+            todos
+        </section>
     </main>
     <footer>
         footer  
     </footer>
 </body>
+<script>
+    let todos = ['Go to the supermarket']
+    
+
+    const todosList =document.getElementById('todos')
+    const todoInput = document.getElementById('textInput')
+    const inputBtn = document.getElementById('add')
+
+
+    function addTodo(e) {
+        e.preventDefault{}
+        let textValue = todoInput.value
+        todos.push(textValue)
+        renderTodos()
+    }
+    inputBtn.addEventListener('click, addTodo')
+
+
+    function renderTodos(){
+        todosList.innerHTML = ''
+        todos.forEach((todo, i) => {
+            let currentHTML = todosList.innerHTML
+            let newHTML = (
+                `<div class="todoItem">
+                    <p>${i + 1}. ${todo}</p>
+                    <div class="actions">
+                        <i onclick="editTodo(${i})" class="fa-solid fa-pen"></i>
+                        <i onclick="removeTodo(${i})" class="fa-regular fa-trash-can"></i>
+                    </div>
+                </div>`
+            )
+
+            let amendedHTML = currentHTML + newHTML
+            todosList.innerHTML = amendedHTML
+        })
+        }
+
+        renderTodos()
+    </script>
     </html>
